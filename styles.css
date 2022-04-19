@@ -1,0 +1,3 @@
+li:has(input:checked) {
+  text-decoration: line-through;
+}
