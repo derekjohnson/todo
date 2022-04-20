@@ -1,46 +1,105 @@
 /* Theme */
 :root {
-  --background: #061019;
+  --background: #0e1e25;
   --foreground: #96e8e9;
   --lowlight: #475d61;
-  --highlight: ##ec4739;
+  --midlight: #c3c48c;
+  --highlight: #ec4739;
+  --font: monospace;
 }
 
 body {
   background-color: black;
   border: 1px solid var(--lowlight);
   color: var(--foreground);
-  margin: 1rem;
-  padding: 1rem;
+  font-family: var(--font);
+  margin: 0.25rem;
+  padding: 0.25rem;
 }
 
 main {
   background-color: var(--background);
-  padding: 2rem;
+  padding-block: 0 0.875rem;
   position: relative;
 }
 
-main::before,
-main::after {
+main::before {
   border: 1px solid var(--lowlight);
   content: "";
-  height: 0.875rem;
+  height: 0.625rem;
   left: 0.875rem;
   position: absolute;
-  top: 0.875rem;
+  top: 0.9375rem;
   transform: rotate(45deg);
+  width: 0.625rem;
+}
+
+main::after {
+  background-image: linear-gradient(transparent, transparent 48%, var(--lowlight) 48%, var(--lowlight) 52%, transparent 52%, transparent);
+  border-inline-start: 1px solid var(--lowlight);
+  content: "";
+  height: 0.875rem;
+  position: absolute;
+  right: 0.875rem;
+  top: 0.875rem;
   width: 0.875rem;
 }
 
-main::after {
-  left: auto;
-  right: 0.875rem;
+h1 {
+  color: var(--highlight);
+  font-weight: normal;
+  margin-block: 0 1rem;
+  margin-inline: auto;
+  padding-block-start: 0.4375rem;
+  position: relative;
+  text-decoration: underline overline var(--lowlight);
+  width: max-content;
+}
+
+h1::before,
+h1::after {
+  background-color: var(--midlight);
+  content: "";
+  height: 2px;
+  position: absolute;
+  width: 2px;
+}
+
+h1::after {
+  background-image: linear-gradient(var(--foreground), var(--foreground) 1px, var(--lowlight) 1px, var(--lowlight) 2px, var(--midlight) 2px, var(--midlight));
+  bottom: 2px;
+  height: 4px;
+  left: 0;
+}
+
+ul {
+  margin: 0.5rem 0.875rem 0;
+  width: fit-content;
+  outline: 1px solid var(--lowlight);
+  padding: 1rem;
+}
+
+ul.checkable {
+  list-style: none;
+}
+
+li {
+  font-size: 1.125rem;
+  padding-block: 0.25rem;
 }
 
 li:has(input:checked) {
-  text-decoration: line-through;
+  text-decoration: line-through var(--highlight);
 }
 
-.checkable {
-  list-style: none;
+label {
+  align-items: flex-start;
+  display: flex;
+}
+
+input[type=checkbox] {
+  accent-color: var(--foreground);
+  height: 1.125rem;
+  margin-inline-end: 0.5rem;
+  width: 1.125rem;
 }

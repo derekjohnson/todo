@@ -16,7 +16,7 @@ const callback = (mutations) => {
         item.appendChild(makeCheckable(item));
       }
     });
-    storage(list, 'todo');
+    storage(list, 'todos');
   });
 };
 
