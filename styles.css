@@ -1,3 +1,46 @@
+/* Theme */
+:root {
+  --background: #061019;
+  --foreground: #96e8e9;
+  --lowlight: #475d61;
+  --highlight: ##ec4739;
+}
+
+body {
+  background-color: black;
+  border: 1px solid var(--lowlight);
+  color: var(--foreground);
+  margin: 1rem;
+  padding: 1rem;
+}
+
+main {
+  background-color: var(--background);
+  padding: 2rem;
+  position: relative;
+}
+
+main::before,
+main::after {
+  border: 1px solid var(--lowlight);
+  content: "";
+  height: 0.875rem;
+  left: 0.875rem;
+  position: absolute;
+  top: 0.875rem;
+  transform: rotate(45deg);
+  width: 0.875rem;
+}
+
+main::after {
+  left: auto;
+  right: 0.875rem;
+}
+
 li:has(input:checked) {
   text-decoration: line-through;
+}
+
+.checkable {
+  list-style: none;
 }
