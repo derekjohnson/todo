@@ -6,6 +6,8 @@
   --midlight: #c3c48c;
   --highlight: #ec4739;
   --font: monospace;
+
+  --edit-letter-spacing: normal;
 }
 
 body {
@@ -52,7 +54,8 @@ h1 {
   margin-inline: auto;
   padding-block-start: 0.4375rem;
   position: relative;
-  text-decoration: underline overline var(--lowlight);
+  text-decoration: underline overline;
+  text-decoration-color: var(--lowlight);
   max-width: max-content;
 }
 
@@ -77,12 +80,30 @@ ul {
   margin-inline: min(0.875rem, 5vw);
   max-width: fit-content;
   outline: 1px solid var(--lowlight);
-  padding: 1rem 0.875rem;
-  padding-inline: min(0.875rem, 5vw);
+  padding: 1rem min(0.875rem, 5vw);
+  position: relative;
 }
 
 ul.checkable {
   list-style: none;
+}
+
+ul.checkable::after {
+  background-color: hsl(189.2, 15.5%, 14.9%);
+  background-image: repeating-linear-gradient(45deg, var(--background), var(--background) 2px, transparent 2px, transparent 4px);
+  border-block-start: 1px solid var(--lowlight);
+  bottom: 0;
+  color: var(--midlight);
+  content: "EDIT";
+  letter-spacing: var(--edit-letter-spacing);
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  text-orientation: upright;
+  top: 0;
+  width: 1rem;
+  writing-mode: vertical-lr;
 }
 
 li {
@@ -92,7 +113,8 @@ li {
 }
 
 li:has(input:checked) {
-  text-decoration: line-through var(--highlight);
+  text-decoration: line-through;
+  text-decoration-color: var(--midlight);
 }
 
 label {
