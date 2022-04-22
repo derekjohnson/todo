@@ -1,4 +1,4 @@
-// Wrap list item in a label element and give it a checkbox sibling
+// Wrap list item text in a label element and give it a checkbox sibling
 // if it's not already done.
 export default (item) => {
   const originalText = item.textContent;
