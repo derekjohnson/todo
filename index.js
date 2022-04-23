@@ -1,7 +1,6 @@
 import makeCheckable from './make-checkable.js';
 import storage from './storage.js';
 import { checklistToObject, objectToChecklist } from './checklist-object-converter.js';
-import editTextSpread from './edit-text-spread.js';
 
 // Name for the localStorage store
 const store = 'todos';
