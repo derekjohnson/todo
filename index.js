@@ -47,7 +47,7 @@ checkboxes.forEach(checkbox => {
     let listObject = checklistToObject(list);
     storage(JSON.stringify(listObject), store);
   });
-  checkbox.addEventListener('touchStart', () => {
+  checkbox.addEventListener('touchstart', () => {
     list.contentEditable = false;
     setTimeout(() => {
       list.contentEditable = true;
