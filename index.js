@@ -18,9 +18,6 @@ if(localStorage[store]) {
   list.appendChild(document.createElement('li'));
 }
 
-// Make the word "edit" nicely spaced
-editTextSpread(list);
-
 // What to do when the observed element mutates
 const callback = (mutations) => {
   mutations.forEach(mutation => {
