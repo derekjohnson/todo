@@ -41,6 +41,8 @@ observer.observe(list, {childList: true});
 
 // Add a listener to store for the checkboxes getting checked and unchecked
 // so that's saved in localStorage without the need for a new item
+// also iOS Safari ignores the contenteditable=false in wrapping the checkbox
+// and opens the keyboard when the checkbox is tapped, so momentarily remove it
 const checkboxes = list.querySelectorAll('input');
 
 checkboxes.forEach(checkbox => {
@@ -48,4 +50,11 @@ checkboxes.forEach(checkbox => {
     let listObject = checklistToObject(list);
     storage(JSON.stringify(listObject), store);
   });
+  checkbox.addEventListener('touchStart', () => {
+    list.contentEditable = false;
+    setTimeout(() => {
+      list.contentEditable = true;
+    }, 100);
+  });
 });
+
