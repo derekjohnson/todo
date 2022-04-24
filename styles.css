@@ -95,20 +95,21 @@ ul.checkable::after {
   border-block-start: 1px solid var(--lowlight);
   bottom: 0;
   color: var(--midlight);
-  content: "EDIT";
+  content: "";
   letter-spacing: var(--edit-letter-spacing);
+  line-height: 2.75rem;
   pointer-events: none;
   position: absolute;
   right: 0;
   text-align: center;
   text-orientation: upright;
   top: 0;
-  width: 1rem;
+  width: 2.75rem;
   writing-mode: vertical-lr;
 }
 
 li {
-  margin-inline-end: 1rem;
+  margin-inline-end: 2.75rem;
   padding-block: 0.25rem;
 }
 
