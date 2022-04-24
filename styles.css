@@ -1,32 +1,36 @@
 /* Theme */
 :root {
-  --background: #0e1e25;
-  --foreground: #96e8e9;
-  --lowlight: #475d61;
-  --midlight: #c3c48c;
-  --highlight: #ec4739;
+  --base: 190, 65%;
+  --base-bright: hsl(var(--base), 75%);
+  --base-light: hsl(var(--base), 23%);
+  --base-mid-light: hsl(var(--base), 12.5%);
+  --base-mid: hsl(var(--base), 10%);
+  --base-dark: hsl(var(--base), 3%);
+  --secondary: hsl(5, 83%, 58%);;
+  --tertiary: hsl(61, 32%, 66%);
+
   --font: monospace;
 
   --edit-letter-spacing: normal;
 }
 
 body {
-  background-color: black;
-  border: 1px solid var(--lowlight);
-  color: var(--foreground);
+  background-color: var(--base-dark);
+  border: 1px solid var(--base-light);
+  color: var(--base-bright);
   font-family: var(--font);
   margin: 0.25rem;
   padding: 0.25rem;
 }
 
 main {
-  background-color: var(--background);
+  background-color: var(--base-mid);
   padding-block: 0 0.875rem;
   position: relative;
 }
 
 main::before {
-  border: 1px solid var(--lowlight);
+  border: 1px solid var(--base-light);
   content: "";
   height: 0.625rem;
   left: 0.875rem;
@@ -37,8 +41,8 @@ main::before {
 }
 
 main::after {
-  background-image: linear-gradient(transparent, transparent 48%, var(--lowlight) 48%, var(--lowlight) 52%, transparent 52%, transparent);
-  border-inline-start: 1px solid var(--lowlight);
+  background-image: linear-gradient(transparent, transparent 48%, var(--base-light) 48%, var(--base-light) 52%, transparent 52%, transparent);
+  border-inline-start: 1px solid var(--base-light);
   content: "";
   height: 0.875rem;
   position: absolute;
@@ -48,20 +52,20 @@ main::after {
 }
 
 h1 {
-  color: var(--highlight);
+  color: var(--secondary);
   font-weight: normal;
   margin-block: 0 1rem;
   margin-inline: auto;
   padding-block-start: 0.4375rem;
   position: relative;
   text-decoration: underline overline;
-  text-decoration-color: var(--lowlight);
+  text-decoration-color: var(--base-light);
   max-width: max-content;
 }
 
 h1::before,
 h1::after {
-  background-color: var(--midlight);
+  background-color: var(--tertiary);
   content: "";
   height: 2px;
   position: absolute;
@@ -69,7 +73,7 @@ h1::after {
 }
 
 h1::after {
-  background-image: linear-gradient(var(--foreground), var(--foreground) 1px, var(--lowlight) 1px, var(--lowlight) 2px, var(--midlight) 2px, var(--midlight));
+  background-image: linear-gradient(var(--base-bright), var(--bright) 1px, var(--base-light) 1px, var(--base-light) 2px, var(--tertiary) 2px, var(--tertiary));
   bottom: 2px;
   height: 4px;
   left: 0;
@@ -80,7 +84,7 @@ ul {
   margin: 0.5rem 0.875rem 0;
   margin-inline: min(0.875rem, 5vw);
   max-width: fit-content;
-  outline: 1px solid var(--lowlight);
+  outline: 1px solid var(--base-light);
   padding: 1rem min(0.875rem, 5vw);
   position: relative;
 }
@@ -90,11 +94,11 @@ ul.checkable {
 }
 
 ul.checkable::after {
-  background-color: hsl(189.2, 15.5%, 14.9%);
-  background-image: repeating-linear-gradient(45deg, var(--background), var(--background) 2px, transparent 2px, transparent 4px);
-  border-block-start: 1px solid var(--lowlight);
+  background-color: var(--base-mid-light);
+  background-image: repeating-linear-gradient(45deg, var(--base-mid), var(--base-mid) 2px, transparent 2px, transparent 4px);
+  border-block-start: 1px solid var(--base-light);
   bottom: 0;
-  color: var(--midlight);
+  color: var(--tertiary);
   content: "";
   letter-spacing: var(--edit-letter-spacing);
   line-height: 2.75rem;
@@ -115,7 +119,7 @@ li {
 
 li:has(input:checked) {
   text-decoration: line-through;
-  text-decoration-color: var(--midlight);
+  text-decoration-color: var(--tertiary);
 }
 
 label {
@@ -124,7 +128,7 @@ label {
 }
 
 input[type=checkbox] {
-  accent-color: var(--foreground);
+  accent-color: var(--base-bright);
   height: 1.125rem;
   margin-inline-end: 0.5rem;
   width: 1.125rem;
