@@ -4,7 +4,7 @@ export default async () => {
       const registration = await navigator.serviceWorker.register(
         '../sw.js',
         {
-          scope: '../',
+          scope: '../todo',
         }
       );
       if (registration.installing) {
