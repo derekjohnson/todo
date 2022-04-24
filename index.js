@@ -1,6 +1,9 @@
 import makeCheckable from './modules/make-checkable.js';
 import storage from './modules/storage.js';
 import { checklistToObject, objectToChecklist } from './modules/checklist-object-converter.js';
+import registerServiceWorker from './modules/register-service-worker.js';
+
+registerServiceWorker();
 
 // Name for the localStorage store
 const store = 'todos';
