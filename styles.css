@@ -30,25 +30,25 @@ main {
 }
 
 main::before {
+  block-size: 0.625rem;
   border: 1px solid var(--base-light);
   content: "";
-  height: 0.625rem;
-  left: 0.875rem;
+  inline-size: 0.625rem;
+  inset-block: 0.9375rem;
+  inset-inline: 0.875rem;
   position: absolute;
-  top: 0.9375rem;
   transform: rotate(45deg);
-  width: 0.625rem;
 }
 
 main::after {
   background-image: linear-gradient(transparent, transparent 48%, var(--base-light) 48%, var(--base-light) 52%, transparent 52%, transparent);
+  block-size: 0.875rem;
   border-inline-start: 1px solid var(--base-light);
   content: "";
-  height: 0.875rem;
+  inline-size: 0.875rem;
   position: absolute;
   right: 0.875rem;
   top: 0.875rem;
-  width: 0.875rem;
 }
 
 h1 {
@@ -66,17 +66,17 @@ h1 {
 h1::before,
 h1::after {
   background-color: var(--tertiary);
+  block-size: 2px;
   content: "";
-  height: 2px;
+  inline-size: 2px;
   position: absolute;
-  width: 2px;
 }
 
 h1::after {
   background-image: linear-gradient(var(--base-bright), var(--bright) 1px, var(--base-light) 1px, var(--base-light) 2px, var(--tertiary) 2px, var(--tertiary));
-  bottom: 2px;
-  height: 4px;
-  left: 0;
+  block-size: 4px;
+  inset-block-end: 2px;
+  inset-inline: 0;
 }
 
 ul {
@@ -95,20 +95,18 @@ ul.checkable {
 
 ul.checkable::after {
   background-color: var(--base-mid-light);
-  background-image: repeating-linear-gradient(45deg, var(--base-mid), var(--base-mid) 2px, transparent 2px, transparent 4px);
   border-block-start: 1px solid var(--base-light);
-  bottom: 0;
   color: var(--tertiary);
   content: "";
+  inset-block-end: 0;
+  inset-inline: 0;
   letter-spacing: var(--edit-letter-spacing);
   line-height: 2.75rem;
   pointer-events: none;
   position: absolute;
-  right: 0;
   text-align: center;
   text-orientation: upright;
-  top: 0;
-  width: 2.75rem;
+  block-size: 2.75rem;
   writing-mode: vertical-lr;
 }
 
@@ -129,7 +127,7 @@ label {
 
 input[type=checkbox] {
   accent-color: var(--base-bright);
-  height: 1.125rem;
+  block-size: 1.125rem;
+  inline-size: 1.125rem;
   margin-inline-end: 0.5rem;
-  width: 1.125rem;
 }
