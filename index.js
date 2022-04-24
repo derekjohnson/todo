@@ -1,6 +1,6 @@
-import makeCheckable from './make-checkable.js';
-import storage from './storage.js';
-import { checklistToObject, objectToChecklist } from './checklist-object-converter.js';
+import makeCheckable from './modules/make-checkable.js';
+import storage from './modules/storage.js';
+import { checklistToObject, objectToChecklist } from './modules/checklist-object-converter.js';
 
 // Name for the localStorage store
 const store = 'todos';
