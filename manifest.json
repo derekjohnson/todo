@@ -3,7 +3,7 @@
   "short_name": "Todo",
   "dir": "auto",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/todo",
   "display": "fullscreen",
   "lang": "en",
   "description": "Simple todo list maker that does one thing: make a todo list.",
