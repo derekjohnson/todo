@@ -111,6 +111,7 @@ ul.checkable::after {
 }
 
 li {
+  margin-block-end: 0.25rem;
   margin-inline-end: 2.75rem;
   padding-block: 0.25rem;
 }
@@ -125,9 +126,57 @@ label {
   display: flex;
 }
 
+span {
+  display: grid;
+  place-items: center;
+}
+
+/* Couldn't have done this without https://moderncss.dev/pure-css-custom-checkbox-style/ */
 input[type=checkbox] {
   accent-color: var(--base-bright);
+  appearance: none;
+  -webkit-appearance: none;
   block-size: 1.9375rem;
+  border: 1px solid var(--base-bright);
+  display: grid;
   inline-size: 1.9375rem;
   margin-inline-end: 0.875rem;
+  place-items: center;
+}
+
+input[type=checkbox]::before {
+  background-image: linear-gradient(
+    45deg,
+    transparent,
+    transparent calc(50% - 0.5px),
+    var(--base-bright) calc(50% - 0.5px),
+    var(--base-bright) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px),
+    transparent
+    ),
+    linear-gradient(
+    315deg,
+    transparent,
+    transparent calc(50% - 0.5px),
+    var(--base-bright) calc(50% - 0.5px),
+    var(--base-bright) calc(50% + 0.5px),
+    transparent calc(50% + 0.5px),
+    transparent
+  );
+  block-size: 100%;
+  content: "";
+  display: block;
+  inline-size: 100%;
+  transform: scale(0);
+  transform-origin: center;
+  transition: 200ms transform ease-in;
+}
+
+input[type=checkbox]:checked::before {
+  transform: scale(1);
+}
+
+input[type=checkbox]:hover,
+input[type=checkbox]:focus-visible {
+  border-color: var(--secondary);
 }
