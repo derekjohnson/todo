@@ -111,6 +111,7 @@ ul.checkable::after {
 }
 
 li {
+  display: flex;
   margin-block-end: 0.25rem;
   margin-inline-end: 2.75rem;
   padding-block: 0.25rem;
@@ -119,6 +120,20 @@ li {
 li:has(input:checked) {
   text-decoration: line-through;
   text-decoration-color: var(--tertiary);
+}
+
+li::before {
+  background-color: var(--secondary);
+  content: "";
+  inline-size: 1px;
+  transform: scale(0);
+  transform-origin: center;
+  transition: 200ms transform ease-in;
+}
+
+li:hover::before,
+li:focus-within::before {
+  transform: scale(1);
 }
 
 label {
@@ -176,7 +191,6 @@ input[type=checkbox]:checked::before {
   transform: scale(1);
 }
 
-input[type=checkbox]:hover,
 input[type=checkbox]:focus-visible {
-  border-color: var(--secondary);
+  outline: none;
 }
