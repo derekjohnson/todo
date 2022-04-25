@@ -121,13 +121,13 @@ li:has(input:checked) {
 }
 
 label {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
 }
 
 input[type=checkbox] {
   accent-color: var(--base-bright);
-  block-size: 1.125rem;
-  inline-size: 1.125rem;
-  margin-inline-end: 0.5rem;
+  block-size: 1.9375rem;
+  inline-size: 1.9375rem;
+  margin-inline-end: 0.875rem;
 }

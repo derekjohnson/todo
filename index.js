@@ -50,7 +50,7 @@ checkboxes.forEach(checkbox => {
     let listObject = checklistToObject(list);
     storage(JSON.stringify(listObject), store);
   });
-  checkbox.addEventListener('touchstart', () => {
+  checkbox.addEventListener('pointerover', () => {
     list.contentEditable = false;
     setTimeout(() => {
       list.contentEditable = true;
