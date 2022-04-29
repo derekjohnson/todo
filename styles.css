@@ -151,10 +151,10 @@ input[type=checkbox] {
   accent-color: var(--base-bright);
   appearance: none;
   -webkit-appearance: none;
-  block-size: 1.9375rem;
+  block-size: 2.75rem;
   border: 1px solid var(--base-bright);
   display: grid;
-  inline-size: 1.9375rem;
+  inline-size: 2.75rem;
   margin-inline-end: 0.875rem;
   place-items: center;
 }

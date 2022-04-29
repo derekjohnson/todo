@@ -54,7 +54,7 @@ checkboxes.forEach(checkbox => {
     list.contentEditable = false;
     setTimeout(() => {
       list.contentEditable = true;
-    }, 100);
+    }, 300);
   });
 });
 
