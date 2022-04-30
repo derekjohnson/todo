@@ -18,11 +18,10 @@ const objectToChecklist = (object) => {
   const keys = Object.keys(object);
   const fragment = new DocumentFragment();
   keys.forEach(key => {
-    if(!key.length) return;
     const item = document.createElement('li');
     const text = document.createTextNode(key);
     item.appendChild(text);
-    if(!item.querySelector('input') && item.textContent != false) {
+    if(!item.querySelector('input')) {
       item.appendChild(makeCheckable(item));
     }
     if(object[key] === 'checked') {
