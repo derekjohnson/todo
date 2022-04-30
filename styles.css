@@ -189,7 +189,7 @@ input[type=checkbox]::before {
   inline-size: 100%;
   transform: scale(0);
   transform-origin: center;
-  transition: 200ms transform ease-in;
+  transition: 200ms transform linear;
 }
 
 input[type=checkbox]:checked::before {
@@ -208,3 +208,22 @@ menu {
   max-inline-size: var(--size);
   padding: 0;
 }
+
+button {
+  appearance: none;
+}
+
+#delete-checked {
+  background-color: var(--secondary);
+  border: 1px solid var(--tertiary);
+}
+
+svg {
+  block-size: 2.75rem;
+  inline-size: 2.75rem;
+}
+
+path {
+  fill: var(--base-dark);
+}
+
