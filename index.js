@@ -63,7 +63,15 @@ checkboxes.forEach(checkbox => {
 const deleteButton = document.getElementById('delete-checked');
 
 deleteButton.addEventListener('click', () => {
-  const checkedItems = document.querySelectorAll('li:has(input:checked)');
+  // const checkedItems = document.querySelectorAll('li:has(input:checked)');
+  // would have been a lot easier than the next few lines
+  const items = document.querySelectorAll('li');
+  const itemsArray = Array.from(items);
+  const checkedItems = itemsArray.filter(item => {
+    if(item.querySelector('input:checked')) {
+      return item;
+    }
+  });
   deleteNodes(checkedItems);
 });
 
