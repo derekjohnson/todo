@@ -2,6 +2,7 @@ import makeCheckable from './modules/make-checkable.js';
 import storage from './modules/storage.js';
 import { checklistToObject, objectToChecklist } from './modules/checklist-object-converter.js';
 import registerServiceWorker from './modules/register-service-worker.js';
+import deleteNodes from './modules/delete-nodes.js';
 
 registerServiceWorker();
 
@@ -56,5 +57,13 @@ checkboxes.forEach(checkbox => {
       list.contentEditable = true;
     }, 300);
   });
+});
+
+// Delete checked nodes
+const deleteButton = document.getElementById('delete-checked');
+
+deleteButton.addEventListener('click', () => {
+  const checkedItems = document.querySelectorAll('li:has(input:checked)');
+  deleteNodes(checkedItems);
 });
 
