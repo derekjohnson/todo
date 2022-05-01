@@ -205,7 +205,8 @@ menu {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  margin: 0;
+  margin: 0.5rem 0.875rem 0;
+  margin-inline-size: min(0.875rem, 5vw);
   max-inline-size: var(--size);
   padding: 0;
 }
