@@ -205,12 +205,16 @@ menu {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  margin: 0;
   max-inline-size: var(--size);
   padding: 0;
 }
 
 button {
   appearance: none;
+  block-size: 2.75rem;
+  inline-size: 2.75rem;
+  padding: 0;
 }
 
 #delete-checked {
@@ -219,7 +223,6 @@ button {
 }
 
 svg {
-  block-size: 2.75rem;
   inline-size: 2.75rem;
 }
 
