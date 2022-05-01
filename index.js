@@ -10,6 +10,11 @@ import deleteNodes from './modules/delete-nodes.js';
 // Name for the localStorage store
 const store = 'todos';
 
+// Proxy for not Safari until I figure out how
+// to get selection and range working there
+const supportsVibrate = 'vibrate' in navigator;
+console.log(supportsVibrate);
+
 // Add class to hide bullet points
 const list = document.querySelector('ul');
 list.classList.add('checkable');
@@ -20,10 +25,14 @@ if(localStorage[store]) {
   const listFromStorage = objectToChecklist(JSON.parse(localStorage[store]));
   list.innerHTML = '';
   list.appendChild(listFromStorage);
-  const labels = list.querySelectorAll('label');
-  const lastLabel = labels[labels.length - 1];
-  list.focus();
-  placeCaret(lastLabel);
+  if(supportsVibrate) {
+    const labels = list.querySelectorAll('label');
+    const lastLabel = labels[labels.length - 1];
+    list.focus();
+    placeCaret(lastLabel);
+  } else {
+    list.appendChild(document.createElement('li'));
+  }
 }
 
 // What to do when the observed element mutates
@@ -32,11 +41,18 @@ const callback = (mutations) => {
     const items = list.querySelectorAll('li');
     const lastItem = items[items.length - 1];
     items.forEach(item => {
-      if(!item.querySelector('input')) {
-        item.appendChild(makeCheckable(item));
-        if(item === lastItem) {
-          list.focus();
-          placeCaret(item.querySelector('label'));
+      if(supportsVibrate) {
+        if(!item.querySelector('input')) {
+          item.appendChild(makeCheckable(item));
+          if(item === lastItem) {
+            list.focus();
+            placeCaret(item.querySelector('label'));
+          }
+        }
+      } else {
+        // Safari
+        if(!item.querySelector('input') && item.textContent != false) {
+          item.appendChild(makeCheckable(item));
         }
       }
     });
