@@ -211,6 +211,10 @@ menu {
   padding: 0;
 }
 
+menu li {
+  margin-inline-end: 0;
+}
+
 button {
   appearance: none;
   block-size: 2.75rem;
