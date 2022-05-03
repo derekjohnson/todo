@@ -3,7 +3,9 @@ import storage from './modules/storage.js';
 import { checklistToObject, objectToChecklist } from './modules/checklist-object-converter.js';
 import registerServiceWorker from './modules/register-service-worker.js';
 import placeCaret from './modules/place-caret.js';
+import getCheckedItems from './modules/get-checked-items.js';
 import deleteNodes from './modules/delete-nodes.js';
+import moveCheckedToBottom from './modules/move-checked-to-bottom.js';
 
 //registerServiceWorker();
 
@@ -13,14 +15,14 @@ const store = 'todos';
 // Proxy for not Safari until I figure out how
 // to get selection and range working there
 const supportsVibrate = 'vibrate' in navigator;
-console.log(supportsVibrate);
 
 // Add class to hide bullet points
 const list = document.querySelector('ul');
 list.classList.add('checkable');
 
 // Add a saved list to the UI if it exists
-// and pop the caret on the end of the last one
+// and pop the caret on the end of the last one in Safari
+// to make adding a new one easier
 if(localStorage[store]) {
   const listFromStorage = objectToChecklist(JSON.parse(localStorage[store]));
   list.innerHTML = '';
@@ -35,7 +37,9 @@ if(localStorage[store]) {
   }
 }
 
-// What to do when the observed element mutates
+// When the list mutates go through all the items
+// and if they don't have a child input element
+// add one with a label, and focus the last one
 const callback = (mutations) => {
   mutations.forEach(mutation => {
     const items = list.querySelectorAll('li');
@@ -50,7 +54,8 @@ const callback = (mutations) => {
           }
         }
       } else {
-        // Safari
+        // Safari places the caret before the first checkbox in the list
+        // so don't do any of the above in Safari
         if(!item.querySelector('input') && item.textContent != false) {
           item.appendChild(makeCheckable(item));
         }
@@ -88,15 +93,15 @@ checkboxes.forEach(checkbox => {
 const deleteButton = document.getElementById('delete-checked');
 
 deleteButton.addEventListener('click', () => {
-  // const checkedItems = document.querySelectorAll('li:has(input:checked)');
-  // would have been a lot easier than the next few lines
-  const items = document.querySelectorAll('li');
-  const itemsArray = Array.from(items);
-  const checkedItems = itemsArray.filter(item => {
-    if(item.querySelector('input:checked')) {
-      return item;
-    }
-  });
+  const checkedItems = getCheckedItems(list);
   deleteNodes(checkedItems);
 });
 
+// Move checked items to the bottom of the list
+const moveDownButton = document.getElementById('checked-to-bottom');
+
+moveDownButton.addEventListener('click', () => {
+  const newItems = moveCheckedToBottom(list);
+  list.innerHTML = '';
+  list.appendChild(newItems);
+});

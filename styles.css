@@ -214,20 +214,28 @@ menu {
 button {
   appearance: none;
   block-size: 2.75rem;
+  border: 1px solid var(--tertiary);
   inline-size: 2.75rem;
   padding: 0;
 }
 
 #delete-checked {
   background-color: var(--secondary);
-  border: 1px solid var(--tertiary);
+}
+
+#checked-to-bottom {
+  background-color: var(--base-dark);
 }
 
 svg {
-  inline-size: 2.75rem;
+  inline-size: 2.3rem;
 }
 
-path {
+#delete-checked path {
   fill: var(--base-dark);
+}
+
+#checked-to-bottom path {
+  fill: var(--base-light);
 }
 
