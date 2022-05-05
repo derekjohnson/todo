@@ -1,7 +1,7 @@
 // Adapted from https://adactio.com/serviceworker.js
 'use strict';
 
-const version = '2022-05-03';
+const version = '2022-05-05';
 const cacheName = `cache-${version}`;
 
 function updateCache() {
