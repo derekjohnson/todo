@@ -19,6 +19,7 @@ const objectToChecklist = (object) => {
   const fragment = new DocumentFragment();
   keys.forEach(key => {
     const item = document.createElement('li');
+    item.setAttribute('draggable', 'draggable');
     const text = document.createTextNode(key);
     item.appendChild(text);
     if(!item.querySelector('input')) {
