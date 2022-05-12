@@ -35,6 +35,8 @@ if(localStorage[store]) {
     const lastLabel = labels[labels.length - 1];
     list.focus();
     placeCaret(lastLabel);
+  } else {
+    list.appendChild(document.createElement('li'));
   }
 }
 
