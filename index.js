@@ -17,12 +17,15 @@ const store = 'todos';
 const supportsVibrate = 'vibrate' in navigator;
 
 // Add class to hide bullet points
+// and add an empty item on the end for Safari
 const list = document.querySelector('ul');
 list.classList.add('checkable');
+if(!supportsVibrate) {
+  list.appendChild(document.createElement('li'));
+}
 
 // Add a saved list to the UI if it exists
-// and pop the caret on the end of the last one in Safari
-// to make adding a new one easier
+// and pop the caret on the end of the last one
 if(localStorage[store]) {
   const listFromStorage = objectToChecklist(JSON.parse(localStorage[store]));
   list.innerHTML = '';
@@ -32,8 +35,6 @@ if(localStorage[store]) {
     const lastLabel = labels[labels.length - 1];
     list.focus();
     placeCaret(lastLabel);
-  } else {
-    list.appendChild(document.createElement('li'));
   }
 }
 
